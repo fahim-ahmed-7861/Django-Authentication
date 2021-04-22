@@ -5,8 +5,21 @@
 {% block body_block %}
 
 
+   {% if user.is_authenticated %}
 
-  <h1>i am index </h1>
+    <p>Hi {{ user_basic_info.username }}</p>
 
+<p>Your Email : {{ user_basic_info.email }}</p>
+
+<p>  <a href="{{ user_more_info.facebook_id }}">Facebook Profile</a> </p>
+
+
+<img src="/media/{{ user_more_info.profile_pic }}" width="600px">
+
+    {% csrf_token %}
+   {% else %}
+
+   <div class="alert alert-primary">Your are not logged in!</div>
+   {% endif %}
 
 {% endblock %}
